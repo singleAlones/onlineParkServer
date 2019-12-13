@@ -37,7 +37,7 @@ create table news(
      ncid int
 );
       insert into  news values(null,"/images/news/news01.jpg","国家商务部电子商务司司长骞芳莉调研大数据产业园",0);
-   insert into  news values(null,"/images/news/news02.jpg","胡和平在铜川市调研时强调 全力做好稳增长促转型工作 如期高质量打赢脱贫攻坚战",1);
+   insert into  news values(null,"/images/news/news02.jpg","陕西省省委书记胡和平在铜川市调研时强调 全力做好稳增长促转型工作 如期高质量打赢脱贫攻坚战",1);
    insert into  news values(null,"/images/news/news03.jpg","省人大常委会副主任、省总工会主席郭大为一行视察大数据产业园建设",2);
    insert into  news values(null,"/images/news/news04.jpg","陕西省政协副主席杨冠军率省政协优化营商环境专题民主监督调研组一行到访世纪华耀调研",3);
    insert into  news values(null,"/images/news/news05.jpg","局长徐强为组长的省统计局调研组来大数据产业园调研指导工作",4);

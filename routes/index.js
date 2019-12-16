@@ -134,4 +134,12 @@ router.get('/merit2',function(req,res,next){
     res.send(JSON.stringify(result));
  })
 });
+//application
+router.get('/application',function(req,res,next){
+  var sql=`select * from application`;
+  pool.query(sql,[],(err,result)=>{
+   if(err) throw(err);
+    res.send(JSON.stringify(result));
+ })
+});
 module.exports = router;

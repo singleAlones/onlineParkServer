@@ -142,4 +142,31 @@ router.get('/application',function(req,res,next){
     res.send(JSON.stringify(result));
  })
 });
+
+router.get('/application_content',function(req,res,next){
+  console.log(req.query);
+  var appcid=parseInt(req.query.appcid)+1;
+  var sql=`select * from application_content where appcid = ?`;
+  pool.query(sql,[appcid],(err,result)=>{
+   if(err) throw(err);
+    res.send(JSON.stringify(result));
+ })
+});
+// 行业准入
+router.get('/industry',function(req,res,next){
+  console.log(req.query);
+  var appcid=parseInt(req.query.appcid);
+  if(appcid==3){
+    inid=1
+  }else if(appcid==5){
+    inid=2
+  }else {
+    inid=3
+  }
+  var sql=`select * from industry where inid = ?`;
+  pool.query(sql,[inid],(err,result)=>{
+   if(err) throw(err);
+    res.send(JSON.stringify(result));
+ })
+})
 module.exports = router;

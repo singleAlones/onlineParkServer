@@ -237,3 +237,52 @@ insert into merit2 values(null,"B2B电商平台","上下游企业落户园区可
 insert into merit2 values(null,"社交电商平台","平台分销商结算合规、个人结算个税低至0");
 insert into merit2 values(null,"外包服务平台","支持“工作室”万户级大批量入驻，个人服务劳动关系合规处理");
 insert into merit2 values(null,"企业服务平台","服务产品提供、本地化运营服务、人员招聘和培训、平台推广");
+
+
+
+#应用场景式
+  create table application(
+      appid int primary key auto_increment,
+      appName varchar(36),
+      appImg  varchar(36)，
+      appcid   int
+);
+insert into application values(null,"零售电商","/images/index/service/1.png",0);
+insert into application values(null,"社交电商","/images/index/service/2.png",1);
+insert into application values(null,"直播电商","/images/index/service/3.png",2);
+insert into application values(null,"B2B电商","/images/index/service/4.png",3);
+insert into application values(null,"消费品","/images/index/service/5.png",4);
+insert into application values(null,"工业化工","/images/index/service/6.png",5);
+insert into application values(null,"仓储物流","/images/index/service/7.png",6);
+insert into application values(null,"现代服务","/images/index/service/8.png",7);
+
+#应用场景式详情
+  create table application_content(
+     appcid int  primary key auto_increment,
+     appcName varchar(64),
+     appcimg1 varchar(128)
+      
+);
+insert into application_content values(null,"零售电商","/images/industry/lingshou.jpg");
+insert into application_content values(null,"社交电商","/images/industry/shejiao.jpg");
+insert into application_content values(null,"直播电商","/images/industry/zhibo.jpg");
+insert into application_content values(null,"B2B电商","/images/industry/b2b.jpg");
+insert into application_content values(null,"消费品","/images/industry/xiaofei.jpg");
+insert into application_content values(null,"工业化工","/images/industry/gongye.jpg");
+insert into application_content values(null,"仓储物流","/images/industry/wuliu.jpg");
+insert into application_content values(null,"现代服务","/images/industry/xiandai.jpg");
+
+#行业准入
+ create table industry (
+     inid int primary key auto_increment,
+     inName varchar(200),
+     inName1 varchar(200),
+     inName2 varchar(200),
+     inName3 varchar(200),
+     inContent1 varchar(200),
+     inContent2 varchar(200),
+     inContent3 varchar(300) 
+);
+insert into  industry  values(null,"行业入准","资质审批","行业配套",null,"普通道路运输许可、危化品经营许可、危化品运输许可、易制毒经营审批、易制爆经营审批、成品油经营资质审批、食品流通许可","危化品标准停车场、危化品车辆挂牌年审、化学品存储、油品存储",null);
+insert into  industry  values(null,"行业入准","资质审批","行业配套","人力配套","普通道路运输许可、危化品运输许可","危化品标准停车场、危化品车辆挂牌年审、化学品存储、油品存储、其他标准化仓储物流配套","司机、押运员、危化品安全员、库管停车场管理、园区全程招聘、培训、组织考证");
+insert into  industry  values(null,"行业入准","资质审批","行业配套",null,"普通道路运输许可、危化品经营许可、危化品运输许可、易制毒经营审批、易制爆经营审批、成品油经营资质审批","危化品标准停车场、危化品车辆挂牌年审、化学品存储、油品存储",null);

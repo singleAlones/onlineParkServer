@@ -168,5 +168,25 @@ router.get('/industry',function(req,res,next){
    if(err) throw(err);
     res.send(JSON.stringify(result));
  })
-})
+});
+// 行业资讯
+router.get('/industry_content',function(req,res,next){
+  console.log(req.query);
+  var appcid=parseInt(req.query.appcid);
+  var indid;
+  if(appcid==0||appcid==1||appcid==4){
+    indid=1
+  }else if(appcid==6){
+    indid=5
+  }else if(appcid==7){
+    indid=6
+  }else {
+     indid=appcid+1
+  }
+  var sql=`select * from industry_content where indid = ?`;
+  pool.query(sql,[indid],(err,result)=>{
+   if(err) throw(err);
+    res.send(JSON.stringify(result));
+ })
+});  
 module.exports = router;

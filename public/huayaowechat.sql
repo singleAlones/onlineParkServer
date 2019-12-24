@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1
--- 生成日期： 2019-12-20 04:08:21
+-- 生成日期： 2019-12-24 09:08:30
 -- 服务器版本： 10.1.37-MariaDB
 -- PHP 版本： 7.3.1
 
@@ -244,7 +244,9 @@ INSERT INTO `h_user` (`hid`, `hname`, `hphone`) VALUES
 (46, 'sdf', '13319191328'),
 (47, '23', '13319191328'),
 (48, '1216', '13319191328'),
-(49, '1264', '13319191628');
+(49, '1264', '13319191628'),
+(50, 'qwe', '13319191328'),
+(51, '公积金', '13319191328');
 
 -- --------------------------------------------------------
 
@@ -268,9 +270,34 @@ CREATE TABLE `industry` (
 --
 
 INSERT INTO `industry` (`inid`, `inName`, `inName1`, `inName2`, `inName3`, `inContent1`, `inContent2`, `inContent3`) VALUES
-(1, '行业入准', '资质审批', '行业配套', NULL, '普通道路运输许可、\r\n危化品经营许可、\r\n危化品运输许可\r\n、易制毒经营审批、\r\n易制爆经营审批、\r\n成品油经营资质审批、\r\n食品流通许可', '危化品标准停车场、危化品车辆挂牌年审、\r\n化学品存储、\r\n油品存储', NULL),
-(2, '行业入准', '资质审批', '行业配套', '人力配套', '普通道路运输许可、\r\n危化品运输许可', '危化品标准停车场、\r\n危化品车辆挂牌年审、\r\n化学品存储、\r\n油品存储\r\n、其他标准化仓储物流配套\r\n', '司机、\r\n押运员、\r\n危化品安全员、\r\n库管\r\n停车场管理、\r\n园区全程招聘、培训、组织考证'),
-(3, '行业入准', '资质审批', '行业配套', NULL, '普通道路运输许可、\r\n危化品经营许可\r\n、危化品运输许可、\r\n易制毒经营审批\r\n、易制爆经营审批、\r\n成品油经营资质审批', '危化品标准停车场、\r\n危化品车辆挂牌年审、\r\n化学品存储、\r\n油品存储\r\n', NULL);
+(1, '行业准入', '资质审批', '行业配套', NULL, '普通道路运输许可、\r\n危化品经营许可、\r\n危化品运输许可\r\n、易制毒经营审批、\r\n易制爆经营审批、\r\n成品油经营资质审批、\r\n食品流通许可', '危化品标准停车场、危化品车辆挂牌年审、\r\n化学品存储、\r\n油品存储', NULL),
+(2, '行业准入', '资质审批', '行业配套', '人力配套', '普通道路运输许可、\r\n危化品运输许可', '危化品标准停车场、\r\n危化品车辆挂牌年审、\r\n化学品存储、\r\n油品存储\r\n、其他标准化仓储物流配套\r\n', '司机、\r\n押运员、\r\n危化品安全员、\r\n库管\r\n停车场管理、\r\n园区全程招聘、培训、组织考证'),
+(3, '行业准入', '资质审批', '行业配套', NULL, '普通道路运输许可、\r\n危化品经营许可\r\n、危化品运输许可、\r\n易制毒经营审批\r\n、易制爆经营审批、\r\n成品油经营资质审批', '危化品标准停车场、\r\n危化品车辆挂牌年审、\r\n化学品存储、\r\n油品存储\r\n', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `industry_content`
+--
+
+CREATE TABLE `industry_content` (
+  `indid` int(11) NOT NULL,
+  `indimg1` varchar(200) DEFAULT NULL,
+  `indimg2` varchar(200) DEFAULT NULL,
+  `indimg3` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `industry_content`
+--
+
+INSERT INTO `industry_content` (`indid`, `indimg1`, `indimg2`, `indimg3`) VALUES
+(1, '/images/industry/img/shejiao1.jpg', '/images/industry/img/shejiao2.jpg', '/images/industry/img/shejiao3.jpg'),
+(2, '/images/industry/img/zhibo1.jpg', '/images/industry/img/zhibo2.jpg', NULL),
+(3, '/images/industry/img/b2b1.jpg', '/images/industry/img/b2b2.jpg', NULL),
+(4, '/images/industry/img/gongye1.jpg', '/images/industry/img/gongye2.jpg', NULL),
+(5, '/images/industry/img/cangchu1.jpg', '/images/industry/img/cangchu2.jpg', NULL),
+(6, '/images/industry/img/xiandai1.jpg', '/images/industry/img/xiandai2.jpg', '/images/industry/img/xiandai3.jpg');
 
 -- --------------------------------------------------------
 
@@ -590,6 +617,12 @@ ALTER TABLE `industry`
   ADD PRIMARY KEY (`inid`);
 
 --
+-- 表的索引 `industry_content`
+--
+ALTER TABLE `industry_content`
+  ADD PRIMARY KEY (`indid`);
+
+--
 -- 表的索引 `introduce`
 --
 ALTER TABLE `introduce`
@@ -699,13 +732,19 @@ ALTER TABLE `company_content`
 -- 使用表AUTO_INCREMENT `h_user`
 --
 ALTER TABLE `h_user`
-  MODIFY `hid` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `hid` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- 使用表AUTO_INCREMENT `industry`
 --
 ALTER TABLE `industry`
   MODIFY `inid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- 使用表AUTO_INCREMENT `industry_content`
+--
+ALTER TABLE `industry_content`
+  MODIFY `indid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- 使用表AUTO_INCREMENT `introduce`

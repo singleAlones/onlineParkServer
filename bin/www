@@ -7,7 +7,13 @@
 var app = require('../app');
 var debug = require('debug')('huayao-server:server');
 var http = require('http');
-
+var https=require('https');
+var fs=require('fs');
+var privatekey=fs.readFileSync('bin/3193663_centurywealth.cn.key','utf8');
+var certificate = fs.readFileSync('bin/3193663_centurywealth.cn.pem', 'utf8');
+// 构造https服务器选项
+ var options={key:privatekey,cert:certificate}
+ var server=https.createServer(options,app);
 /**
  * Get port from environment and store in Express.
  */
@@ -19,7 +25,7 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+// var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.

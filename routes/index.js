@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var pool=require('../pool');
 /* GET home page. */
+
+ 
 // 主页轮播
 router.get('/i_carousel', function(req, res, next) {
   var sql=`select * from i_carousel`;
@@ -35,6 +37,9 @@ router.get('/news', function(req, res, next) {
 //新闻详情
 router.get('/new_content',function(req,res,next){
   console.log(req.query);
+  if(!req.query.ncid){
+     req.query.ncid=0;
+  }
   var ncid=parseInt(req.query.ncid)+1;
   console.log(ncid);
    var sql=`select ncimg,ncontent, nccontent from news, new_content where new_content.ncid=? and news.nid=?`;
@@ -58,6 +63,9 @@ router.get('/new_content',function(req,res,next){
 //公司详情 
  router.get('/company_content',function(req,res,next){
   console.log(req.query);
+  if(!req.query.comcid){
+    req.query.comcid=0;
+ }
   var comcid=parseInt(req.query.comcid)+1;
    var sql=`select * from company_content where comcid=? `;
    pool.query(sql,[comcid],(err,result)=>{
@@ -78,6 +86,9 @@ router.get('/policy',function(req,res,next){
 
 router.get('/policy_content',function(req,res,next){
   console.log(req.query);
+  if(!req.query.pocid){
+    req.query.pocid=0;
+ }
   var pocid=parseInt(req.query.pocid)+1;
   var sql=`select * from policy_content where pocid = ?`;
   pool.query(sql,[pocid],(err,result)=>{
@@ -104,6 +115,9 @@ router.get('/big_img',function(req,res,next){
 });
 router.get('/introduce_content',function(req,res,next){
   console.log(req.query);
+  if(!req.query.incid){
+    req.query.incid=0;
+ }
   var incid=parseInt(req.query.incid)+1;
   var sql=`select * from  introduce_content  where incid = ?`;
   pool.query(sql,[incid],(err,result)=>{
@@ -145,6 +159,9 @@ router.get('/application',function(req,res,next){
 
 router.get('/application_content',function(req,res,next){
   console.log(req.query);
+  if(!req.query.appcid){
+    req.query.appcid=0;
+ }
   var appcid=parseInt(req.query.appcid)+1;
   var sql=`select * from application_content where appcid = ?`;
   pool.query(sql,[appcid],(err,result)=>{
@@ -155,6 +172,9 @@ router.get('/application_content',function(req,res,next){
 // 行业准入
 router.get('/industry',function(req,res,next){
   console.log(req.query);
+  if(!req.query.appcid){
+    req.query.appcid=3;
+ }
   var appcid=parseInt(req.query.appcid);
   if(appcid==3){
     inid=1
@@ -172,6 +192,9 @@ router.get('/industry',function(req,res,next){
 // 行业资讯
 router.get('/industry_content',function(req,res,next){
   console.log(req.query);
+  if(!req.query.appcid){
+    req.query.appcid=0;
+ }
   var appcid=parseInt(req.query.appcid);
   var indid;
   if(appcid==0||appcid==1||appcid==4){

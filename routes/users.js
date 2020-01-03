@@ -69,8 +69,8 @@ router.get("/deluser",function(req,res,next){
 })
 
 // login admin
-router.get("/admin",function(req,res,next){
-     var obj=req.query;
+router.post("/admin",function(req,res,next){
+     var obj=req.body.params;
      console.log(obj);
      if(obj.auser==""||obj.apwd==""){
       res.send({code:400,msg:'管理员账号或密码为空'})

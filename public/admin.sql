@@ -4,5 +4,6 @@ create table admin (
    apwd  varchar(32)
 )
 insert into admin values(null,"shijihuayao","shijihuayao2019");
+insert into admin values(null,"huayao","123456");
 
  

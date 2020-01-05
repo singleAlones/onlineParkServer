@@ -107,9 +107,9 @@ router.get("/seladmin",function(req,res,next){
 router.get("/addadmin",function(req,res,next){
      var obj=req.query;
      console.log(obj);
-     if(obj.auser==""||obj.apwd==""){
+     if(obj.auser===""||obj.apwd===""){
       res.send({code:400,msg:'管理员账号或密码为空'})
-     }
+     }else{
      var check="select auser from  admin where auser= ?";
      pool.query(check,[obj.auser],function(err,result){
          if(err) throw err 
@@ -127,7 +127,7 @@ router.get("/addadmin",function(req,res,next){
           })
          }
      })
-     
+    }
 })
 // 删除管理员账号
 router.get("/deladmin",function(req,res,next){
@@ -147,6 +147,26 @@ router.get("/deladmin",function(req,res,next){
          }
       })
 })
+//获取所有管理员信息
+router.get("/adminAll",function(req,res,next){
+      var sql="select count(*) as number from  admin";
+      pool.query(sql,[],function(err,result){
+        if(err) throw err;
+         if(result.length>0){
+           res.send(JSON.stringify(result))
+         }
+      })
+})
 
+//获取所有用户信息
+router.get("/userAll",function(req,res,next){
+  var sql="select count(*) as number from  h_user";
+  pool.query(sql,[],function(err,result){
+    if(err) throw err;
+     if(result.length>0){
+       res.send(JSON.stringify(result))
+     }
+  })
+})
 
 module.exports = router;  
